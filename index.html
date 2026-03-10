@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>NaturalCoach – Productos Naturales</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <div class="splash-inner">
+      <img src="logo.png" alt="Logo Silvio Betancur" class="splash-logo-img" />
+      <h1>Silvio Betancur</h1>
+      <p>Tu bienestar, nuestra misión</p>
+    </div>
+  </div>
+
+  <!-- APP WRAPPER -->
+  <div id="app" class="hidden">
+
+    <!-- ==================== HOME ==================== -->
+    <section id="page-home" class="page active">
+      <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+          <div class="avatar">
+            <img src="logo.png" alt="Logo" class="avatar-logo" />
+          </div>
+          <h2>Hola, soy <span>Silvio Betancur</span></h2>
+          <p>Coach de bienestar & especialista en productos naturales</p>
+          <button class="btn-primary" onclick="goTo('catalogo')">Ver Productos</button>
+        </div>
+      </header>
+
+      <div class="section-block">
+        <h3 class="section-title">¿Por qué elegirnos?</h3>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon">🌱</span>
+            <p>100% Naturales</p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon">🔬</span>
+            <p>Certificados</p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon">🚚</span>
+            <p>Envío rápido</p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon">💬</span>
+            <p>Asesoría gratis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h3 class="section-title">Más vendidos</h3>
+        <div class="products-scroll" id="featured-scroll"></div>
+      </div>
+
+      <div class="section-block">
+        <div class="coach-card">
+          <img src="logo.png" alt="Logo Silvio Betancur" class="coach-avatar" />
+          <div class="coach-info">
+            <h4>Silvio Betancur</h4>
+            <p>Coach certificado con +8 años de experiencia en nutrición holística y bienestar natural.</p>
+            <button class="btn-outline" onclick="goTo('contacto')">Contactar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CATÁLOGO ==================== -->
+    <section id="page-catalogo" class="page">
+      <div class="top-bar">
+        <h2>Catálogo</h2>
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" id="searchInput" placeholder="Buscar producto..." oninput="filterProducts()" />
+        </div>
+      </div>
+
+      <div class="categories-scroll" id="categories-bar"></div>
+      <div class="products-grid" id="products-grid"></div>
+    </section>
+
+    <!-- ==================== CARRITO ==================== -->
+    <section id="page-carrito" class="page">
+      <div class="top-bar">
+        <h2>Mi Carrito</h2>
+      </div>
+      <div id="cart-items" class="cart-list"></div>
+      <div id="cart-empty" class="empty-state hidden">
+        <span>🛒</span>
+        <p>Tu carrito está vacío</p>
+        <button class="btn-primary" onclick="goTo('catalogo')">Ir al catálogo</button>
+      </div>
+      <div id="cart-footer" class="cart-footer hidden">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total-amount">$0</span>
+        </div>
+        <button class="btn-primary full-width" onclick="checkout()">Ordenar por WhatsApp 📲</button>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACTO ==================== -->
+    <section id="page-contacto" class="page">
+      <div class="top-bar">
+        <h2>Contacto</h2>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-card" onclick="openWhatsApp()">
+          <span class="contact-icon">💬</span>
+          <div>
+            <h4>WhatsApp</h4>
+            <p>+52 55 1234 5678</p>
+          </div>
+          <span class="arrow">›</span>
+        </div>
+        <div class="contact-card" onclick="openInstagram()">
+          <span class="contact-icon">📸</span>
+          <div>
+            <h4>Instagram</h4>
+            <p>@naturalcoach.mx</p>
+          </div>
+          <span class="arrow">›</span>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">📧</span>
+          <div>
+            <h4>Email</h4>
+            <p>ana@naturalcoach.mx</p>
+          </div>
+          <span class="arrow">›</span>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">📍</span>
+          <div>
+            <h4>Ubicación</h4>
+            <p>Ciudad de México, CDMX</p>
+          </div>
+          <span class="arrow">›</span>
+        </div>
+
+        <div class="form-block">
+          <h3>Envíame un mensaje</h3>
+          <input type="text" placeholder="Tu nombre" class="form-input" />
+          <input type="tel" placeholder="Tu teléfono" class="form-input" />
+          <textarea placeholder="¿En qué puedo ayudarte?" class="form-input" rows="4"></textarea>
+          <button class="btn-primary full-width" onclick="sendMessage()">Enviar mensaje</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DETALLE PRODUCTO ==================== -->
+    <section id="page-detalle" class="page">
+      <div class="top-bar with-back">
+        <button class="btn-back" onclick="history.back(); goTo('catalogo')">‹</button>
+        <h2>Detalle</h2>
+      </div>
+      <div id="product-detail-content"></div>
+    </section>
+
+    <!-- ==================== BOTTOM NAV ==================== -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home" onclick="goTo('home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Inicio</span>
+      </button>
+      <button class="nav-item" data-page="catalogo" onclick="goTo('catalogo')">
+        <span class="nav-icon">🌿</span>
+        <span class="nav-label">Catálogo</span>
+      </button>
+      <button class="nav-item cart-nav" data-page="carrito" onclick="goTo('carrito')">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Carrito</span>
+        <span class="cart-badge hidden" id="cart-badge">0</span>
+      </button>
+      <button class="nav-item" data-page="contacto" onclick="goTo('contacto')">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">Contacto</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- MODAL DETALLE -->
+  <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal()">
+    <div id="modal-box" class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
