@@ -325,7 +325,7 @@ function updateBadge() {
 ============================================================ */
 function checkout() {
   if (!cart.length) return;
-  let msg = '¡Hola Ana! Quiero hacer un pedido:\n\n';
+  let msg = '¡Hola Siana! Quiero hacer un pedido:\n\n';
   let total = 0;
   cart.forEach(item => {
     const p = PRODUCTS.find(x => x.id === item.id);
