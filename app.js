@@ -334,14 +334,14 @@ function checkout() {
     total += p.price * item.qty;
   });
   msg += `\n💰 *Total: $${total.toLocaleString()} MXN*\n\n¡Gracias! 🌿`;
-  window.open(`https://wa.me/5215512345678?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/573117357754?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 /* ============================================================
    CONTACT
 ============================================================ */
 function openWhatsApp() {
-  window.open('https://wa.me/5215512345678?text=Hola%20Ana%2C%20me%20interesa%20recibir%20asesoría%20sobre%20tus%20productos%20naturales%20🌿', '_blank');
+  window.open('https://wa.me/573117357754?text=Hola%20Ana%2C%20me%20interesa%20recibir%20asesoría%20sobre%20tus%20productos%20naturales%20🌿', '_blank');
 }
 
 function openInstagram() {
